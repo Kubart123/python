@@ -45,6 +45,11 @@ def Walec():
     print("\nPole =",(2*math.pi*r) + (2*math.pi*H),"cm^2")
     print("Objętość =",(math.pi*r**2*H)/3,"cm^3")
 
+def Kula():
+    r = input("podaj Promień podstawy \n: ")
+    r = float(r)
+    print("\nPole =",4*math.pi*r**2,"cm^2")
+    print("\nObjętość =",(4/3)*math.pi*r**3,"cm^3")
 def Stozek():
     r = input("podaj Promień podstawy \n: ")
     r = float(r)
@@ -55,13 +60,7 @@ def Stozek():
     print("\nPole =",(math.pi*r **2) + (2*math.pi*l),"cm^2")
     print("Objętość =",math.pi*r**2*H,"cm^3")
 
-def Kula():
-    r = input("podaj Promień podstawy \n: ")
-    r = float(r)
-    print("\nPole =",4*math.pi*r**2,"cm^2")
-    print("\nObjętość =",(4/3)*math.pi*r**3,"cm^3")
-
-#=============================================================================
+#-------------------------------------------------------------
 
 def Kwadrat():
     a = input("podaj bok \n: ")
@@ -77,6 +76,24 @@ def Prostokat():
     print("\nPole =",a*b,"cm^2")
     print("Obwód =",(a*2)+(b*2),"cm")
 
+def Trojkat():
+    a = input("podaj podaj Bok a \n: ")
+    a = float(a)
+    b = input("podaj podaj Bok b \n: ")
+    b = float(b)
+    c = input("podaj podaj Bok c \n: ")
+    c = float(c)
+    h = input("podaj Wysokość \n: ")
+    h = float(h)
+    print("\nPole =",a*h/2,"cm^2")
+    print("Obwód =",a+b+c,"cm")
+
+def Trojkat_Rownoboczny():
+    a = input("podaj podaj Bok a \n: ")
+    a = float(a)
+    print("\nPole =",a**2*3**(1/2)/4,"cm^2")
+    print("Obwód =",a*3,"cm")
+                
 def Rownoleglobok():
     a = input("podaj Bok a \n: ")
     a = float(a)
@@ -100,24 +117,6 @@ def Trapez():
     h = float(h)
     print("\nPole =",((a+b)*h)/2,"cm^2")
     print("Obwód =",a+b+c+d,"cm")
-                
-def Trojkat():
-    a = input("podaj podaj Bok a \n: ")
-    a = float(a)
-    b = input("podaj podaj Bok b \n: ")
-    b = float(b)
-    c = input("podaj podaj Bok c \n: ")
-    c = float(c)
-    h = input("podaj Wysokość \n: ")
-    h = float(h)
-    print("\nPole =",a*h/2,"cm^2")
-    print("Obwód =",a+b+c,"cm")
-
-def Trojkat_Rownoboczny():
-    a = input("podaj podaj Bok a \n: ")
-    a = float(a)
-    print("\nPole =",a**2*3**(1/2)/4,"cm^2")
-    print("Obwód =",a*3,"cm")
 
 def Kolo():
     r = input("podaj Promień podstawy \n: ")
@@ -137,7 +136,7 @@ while True:
     wybor=input("A=Figury 3d  B=Figury 2d C=Dodatkowe wzory \n: ")
 
     if wybor == "A":
-        wybor1 = input("A = sześcian | B = Prostopadłościan | C = Graniastosłup | D = Ostrosłup | E = Walca | F = Stożka | G = Kuli \n: ")
+        wybor1 = input("A = sześcian | B = Prostopadłościan | C = Graniastosłup | D = Ostrosłup | E = Walca | F = Kuli | G = Stożka \n: ")
         if wybor1 == "A":
             Szescian()
 
@@ -154,26 +153,26 @@ while True:
             Walec()
 
         if wybor1 == "F":
-            Stozek()    
+            Kula()    
 
         if wybor1 == "G":
-            Kula()
+            Stozek()
 
     if wybor == "B":
-        wybor1 = input("A = Kwadrat | B = Prostokąt | C = Równoległobok | D = Trapez | E = Trójkąt | F = Trójkąt równoboczny | G = Koło | H = Romb \n: ")
+        wybor1 = input("A = Kwadrat | B = Prostokąt | C = Trojkat | D = Trojkat_Rownoboczny | E = Rownoleglobok | F = Trapez | G = Koło | H = Romb \n: ")
 
         if wybor1 == "A":
             Kwadrat()
         if wybor1 == "B":
             Prostokat()
         if wybor1 == "C":
-            Rownoleglobok()
-        if wybor1 == "D":
-            Trapez()
-        if wybor1 == "E":
             Trojkat()
-        if wybor1 == "F":
+        if wybor1 == "D":
             Trojkat_Rownoboczny()
+        if wybor1 == "E":
+            Rownoleglobok()
+        if wybor1 == "F":
+            Trapez()
         if wybor1 == "G":
             Kolo()
         if wybor1 == "H":
