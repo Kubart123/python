@@ -50,6 +50,7 @@ def Kula():
     r = float(r)
     print("\nPole =",4*math.pi*r**2,"cm^2")
     print("\nObjętość =",(4/3)*math.pi*r**3,"cm^3")
+    
 def Stozek():
     r = input("podaj Promień podstawy \n: ")
     r = float(r)
