@@ -1,0 +1,126 @@
+from random import randint
+
+#-------Nasi bohaterowie----------
+# Imie - 0 Zycie - 1 Ilosc pierniczkow - 2
+swiety_mikolaj = ["Swiety Mikolaj",50,100]
+rudolf = ["Rudolf",100,50]
+kevin = ["Kevin",75,75]
+dziadek_do_orzechow = ["Dziadek do orzechow",55,85]
+Renifer_Niko = ["Renifer Niko",40,110]
+Artur = ["Artur",90,60]
+Shrek = ["Shrek",150,0]
+lista_ostaci = [swiety_mikolaj,rudolf,kevin,dziadek_do_orzechow,Renifer_Niko,Artur,Shrek]
+
+# -------Wybor postaci--------
+print('Mrozna kraine zaatakowali zli bohaterowie...')
+print('Czas uratowac swieta i dostarczyc prezenty wszystkim grzecznym dzieciom!')
+print('Wybierz swojego bohatera:')
+print('A - Swiety Mikolaj - HP: 50, Ilosc pierniczkow: 100')
+print('B - Rudolf - HP: 100, Ilosc pierniczkow: 50')
+print('C - Kevin - HP: 75, Ilosc pierniczkow: 75')
+print('D - Dziadek do orzechow - HP: 55, Ilosc pierniczkow: 85')
+print('E - Renifer_Niko - HP: 40, Ilosc pierniczkow: 110')
+print('F - Artur - HP: 90, Ilosc pierniczkow: 60')
+print('G - Shrek - HP: 150, Ilosc pierniczkow: 0')
+
+
+wybor_postaci = input()
+if wybor_postaci.upper() == 'A':
+    twoja_postac = swiety_mikolaj
+    print(twoja_postac)
+elif wybor_postaci.upper() == 'B':
+    twoja_postac = rudolf
+    print(twoja_postac)
+elif wybor_postaci.upper() == 'C':
+    twoja_postac = kevin
+    print(twoja_postac)
+elif wybor_postaci.upper() == 'D':
+    twoja_postac = dziadek_do_orzechow
+    print(twoja_postac)
+elif wybor_postaci.upper() == 'E':
+    twoja_postac = Renifer_Niko
+    print(twoja_postac)
+elif wybor_postaci.upper() == 'F':
+    twoja_postac = Artur
+    print(twoja_postac)    
+elif wybor_postaci.upper() == 'G':
+    twoja_postac = Shrek
+    print(twoja_postac)
+
+else:
+    print("Nie wybrano postaci. Sprobuj jeszcze raz! :(")
+
+#------Zli bohaterowie---------
+# Imie - 0 Zycie - 1 Liczba zadanych obrazen - 2
+grinch = ["Grinch",100,randint(0,20)]
+ebenezer_scrooge = ["Ebenezer Scrooge",70,randint(0,35)]
+czarnoksieznik = ["Czarnoksieznikiem",80,randint(0,30)]
+dziadek_mroz = ["Dziadek Mróz",60,randint(0,40)]
+el_Caganer = ["El Caganer",100,randint(10,20)]
+lussinatta = ["Lussinatta",90,randint(0,20)]
+joulustaalo = ["Joulustaalo",120,randint(0,20)]
+sinterklaas = ["Sinterklaas",90,randint(0,25)]
+frau_perchta = ["Frau Perchta",200,randint(0,15)]
+belsnickel = ["Belsnickel", 100,randint(0,17)]
+kallikantzaroi = ["Kallikantzaroi",50,randint(0,55)]
+
+lista_przeciwnikow = [grinch,ebenezer_scrooge,czarnoksieznik,dziadek_mroz,el_Caganer,lussinatta,joulustaalo,sinterklaas,frau_perchta,belsnickel,kallikantzaroi]
+
+def random_przeciwnik():
+    przeciwnik =  lista_przeciwnikow[randint(0,10)].copy()
+    return przeciwnik
+    
+#-----Ataki------------
+
+def burza_sniezna():
+    twoja_postac[1] -= 10
+    return randint(20,35)
+
+def rzut_rozga():
+    return 20
+
+def wystawienie_armii_elfow():
+    twoja_postac[2] -= 25
+    return randint(20,30)
+
+def wybierz_atak():
+    print('A - Rzuc rozga!')
+    print('B - wywolaj burze sniezna!')
+    print('C - Wystaw armie swiatecznych elfow!!!!!!!!!!!!!')
+    wybor_ataku = input()
+    if wybor_ataku.upper() == 'A':
+        return rzut_rozga()
+    elif wybor_ataku.upper() == 'B':
+        if twoja_postac[1] >= 10:
+            print("-"*40)
+            return burza_sniezna()
+        else:
+            print("-"*40)
+            print("Nie masz wystarszajaco duzo zycia!!!!!!!")
+    elif wybor_ataku.upper() == 'C':
+        if twoja_postac[2] >= 25:
+            print("-"*40)
+            return wystawienie_armii_elfow()  
+        else:
+            print("-"*40)
+            print("Nie masz PIENICZKOW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Nie masz czym przekupic elfow, zeby Ci pomogly - radz sobie dalej sam! :(" )
+            return 0
+    else:
+        print("Nie wybrano akcji. Cos zle kliknales!")
+        return 0
+        
+przeciwnik = random_przeciwnik()
+print("-"*40)
+while przeciwnik[1] > 0:
+    print(f"{twoja_postac[0]} walczy teraz z {przeciwnik[0]}")
+    print(f"Przeciwnik ma {przeciwnik[1]} Hp i zadaje ci {przeciwnik[2]} obrazen")
+    twoja_postac[1] = twoja_postac[1] - przeciwnik[2]
+    if twoja_postac[1] < 0:
+        print("Przegrales!!! Nie uratowales magii swiat! Dzieci beda plakac!")
+        break
+    print(f"Zostało ci {twoja_postac[1]} Hp i {twoja_postac[2]} Piernikow")
+    atak  = wybierz_atak()
+    przeciwnik[1] = przeciwnik[1] - atak
+    print(f"Zadałes {atak} obrazen")
+    if przeciwnik[1] <= 0:
+        print('Zabiłes przeciwnika !!! Swieta sa uratowane!!! Mozesz wrocic do jedzenia salatki wielowarzywnej!')
